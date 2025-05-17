@@ -1,7 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
 }
+
 
 android {
     namespace = "com.zahra.hosseini.githubviewer"
@@ -69,6 +72,18 @@ dependencies {
     testImplementation(libs.androidx.paging.common)
 
     //DI
-    implementation(libs.androidx.hilt.navigation.fragment)
+    implementation(libs.hilt.android)
+    // For Jetpack Compose navigation with Hilt
+    implementation(libs.androidx.hilt.navigation.compose)
+    kapt(libs.hilt.compiler)
+
+
+    // Retrofit & Gson
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    // OkHttp Logging Interceptor
+    implementation(libs.logging.interceptor)
+
 
 }
